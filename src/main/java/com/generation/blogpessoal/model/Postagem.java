@@ -2,7 +2,6 @@ package com.generation.blogpessoal.model;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
