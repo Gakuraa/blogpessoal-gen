@@ -20,7 +20,7 @@ import jakarta.validation.constraints.Size;
 @Table(name = "tb_postagens")
 public class Postagem {
 
-	@Id
+	@Id // Primary Key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
@@ -29,9 +29,9 @@ public class Postagem {
 	@Column(length = 100)
 	private String titulo;
 
+	@Column(length = 1000)
 	@NotBlank(message = "O atributo texto é Obrigatório!")
 	@Size(min = 10, max = 1000, message = "O atributo texto deve conter no mínimo 10 e no máximo 1000 caracteres")
-	@Column(length = 1000)
 	private String texto;
 
 	@UpdateTimestamp
@@ -46,7 +46,7 @@ public class Postagem {
 	private Usuario usuario;
 
 	public Long getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(Long id) {
@@ -54,7 +54,7 @@ public class Postagem {
 	}
 
 	public String getTitulo() {
-		return this.titulo;
+		return titulo;
 	}
 
 	public void setTitulo(String titulo) {
@@ -62,7 +62,7 @@ public class Postagem {
 	}
 
 	public String getTexto() {
-		return this.texto;
+		return texto;
 	}
 
 	public void setTexto(String texto) {
@@ -70,7 +70,7 @@ public class Postagem {
 	}
 
 	public LocalDateTime getData() {
-		return this.data;
+		return data;
 	}
 
 	public void setData(LocalDateTime data) {
@@ -85,4 +85,11 @@ public class Postagem {
 		this.tema = tema;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }
