@@ -14,21 +14,23 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "tb_temas")
+@Entity// define que sera uma tabela
+@Table(name = "tb_temas")//nomeia a tabela
 public class Tema {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@Id// Primary Key
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //AUTO INCREMENT
 	private Long id;
 	
-	@NotNull
-	private String descricao;
-
+	@NotNull(message = "O atributo Descrição é obrigatório")
+ 	private String descricao;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagem;
 	
+	//implementação dos geters e seters
+
 	public Long getId() {
 		return id;
 	}
@@ -52,6 +54,8 @@ public class Tema {
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
-
+ 	
 	
+	
+
 }
